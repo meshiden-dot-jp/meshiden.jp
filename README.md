@@ -7,7 +7,7 @@
 - フレームワーク: [Next.js](https://nextjs.org/)
 - 言語: TypeScript / JavaScript
 - スタイリング: Tailwind CSS
-- CI/CD: Google Cloud Build + Cloud Run
+- CI/CD: AWS Amplify
 - CMS: microCMS
 - セキュリティ: reCAPTCHA
 - 画像配信: Cloudinary
@@ -35,11 +35,6 @@
 /contact：問い合わせ
 
 /legal/privacy, /legal/pride など：法的情報・ポリシー
-
-## デプロイ
-`Git Bash`で以下のコマンドを実行する。
-- `./build.sh`
-- `gcloud run deploy meshiden-jp --image gcr.io/poised-charger-449311-q9/meshiden-jp --platform managed --region asia-northeast1 --allow-unauthenticated`
 
 ## コンタクト
 サイト上のフォーム、または以下の連絡先よりお問い合わせください。
