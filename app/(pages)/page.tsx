@@ -10,31 +10,42 @@ import Contact from "@/components/layouts/top/contact";
 import Head from "next/head";
 
 export default function Home() {
-  const [showLoading, setShowLoading] = useState(true);
+  const fadeMs = 450;
+
+  const [loadingVisible, setLoadingVisible] = useState(true);
+  const [loadingFading, setLoadingFading] = useState(false);
+
+  const hideOverlayWithFade = () => {
+    if (!loadingVisible || loadingFading) return;
+    setLoadingFading(true);
+    window.setTimeout(() => {
+      setLoadingVisible(false);
+      setLoadingFading(false);
+    }, fadeMs);
+  };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowLoading(false);
-    }, 3000);
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
 
-    return () => clearTimeout(timer);
-    
-  }, []);
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+
+      if ((data as any).type === "UNITY_LOADED") {
+        hideOverlayWithFade();
+      }
+    };
+
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [loadingVisible, loadingFading]);
 
   useEffect(() => {
-    if (showLoading) {
-      // ローディング中：スクロール禁止
-      document.body.style.overflow = "hidden";
-    } else {
-      // ローディング解除：スクロール復活
-      document.body.style.overflow = "auto";
-    }
-
-    // クリーンアップ（コンポーネントがUnmountされたら復帰）
+    document.body.style.overflow = loadingVisible ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [showLoading]);
+  }, [loadingVisible]);
 
   return (
     <div className="overflow-hidden">
@@ -48,13 +59,20 @@ export default function Home() {
           <div className="fade"></div>
         </div>
 
-        {showLoading && (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-white text-black">
-          <div className="flex flex-col items-center gap-4">
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/40 border-t-black" />
-            <p className="text-sm tracking-wide">Loading…</p>
+        {loadingVisible && (
+          <div
+            className={[
+              "fixed inset-0 z-[80] flex items-center justify-center bg-white text-black",
+              "transition-opacity ease-out",
+              loadingFading ? "opacity-0" : "opacity-100",
+            ].join(" ")}
+            style={{ transitionDuration: `${fadeMs}ms` }}
+          >
+            <div className="flex flex-col items-center gap-4">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/40 border-t-black" />
+              <p className="text-sm tracking-wide">Loading…</p>
+            </div>
           </div>
-        </div>
         )}
 
         <main className="relative w-[90%] m-auto sm:pt-[2%] mb-[4%] sm:mt-0 mt-8 z-10">
@@ -90,7 +108,7 @@ export default function Home() {
           <Work />
         </div>
         <div>
-          <h1 id='profile'>自己紹介</h1>
+          <h1 id="profile">自己紹介</h1>
           <Profile />
         </div>
         <div>

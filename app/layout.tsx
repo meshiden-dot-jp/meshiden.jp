@@ -71,6 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="ja">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/rvs7vvb.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
       </head>
       <body className={`${notoSansJP.variable} antialiased flex min-h-screen flex-col`}>
         <Header />

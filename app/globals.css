@@ -318,6 +318,58 @@ label{
     text-align:center;
     padding-top:0.5rem;
   }
+
+  p {
+    > span.callout {
+      display: flex;
+      align-items: flex-start;
+      padding: 20px 20px 20px 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      line-break:anywhere;
+
+      &::before {
+        position: relative;
+        transform: scale(0.6);
+      }
+
+      &.check {
+        background-color: #e8f3d6;
+        &::before {
+          font-family: 'Font Awesome 6 Free';
+          content: '\f058';
+          font-weight: 900;
+          font-size: 2.25em;
+          padding-right:8px;
+          color:#327a1a;
+        }
+      }
+
+      &.caution {
+        background-color: #fdf1b8;
+        &::before {
+          font-family: 'Font Awesome 6 Free';
+          content: '\f06a';
+          font-weight: 900;
+          font-size: 2.25em;
+          padding-right:8px;
+          color:#ac8a25;
+        }
+      }
+
+      &.warning {
+        background-color: #fedcdb;
+        &::before {
+          font-family: 'Font Awesome 6 Free';
+          content: '\f057';
+          font-weight: 900;
+          font-size: 2.25em;
+          padding-right:8px;
+          color:#bb1d14;
+        }
+      }
+    }
+  }
 }
 
 @layer utilities {
