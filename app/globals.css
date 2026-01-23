@@ -264,7 +264,7 @@ label{
 
   pre, pre > code {
     text-align: left;
-    margin-top:1rem;
+    margin-top:2rem;
     background-color: #24292e !important; /* 背景色 */
     color: #e3e3e3;           /* 文字色 */
     padding: 1rem;            /* 内側余白 */
@@ -301,12 +301,24 @@ label{
   }
 
   blockquote {
-    border-left: 4px solid #d1d5db;
-    padding: 1rem 24px;
-    margin: 2rem 0;
-    background-color: #f9fafb;
-    color: #374151;
-    font-style: italic;
+    margin-top:2rem;
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 20px 20px 10px;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    line-break:anywhere;
+    background-color: #ebebeb;
+    &::before {
+      position: relative;
+      transform: scale(0.6);
+      font-family: 'Font Awesome 6 Free';
+      content: '\f10d';
+      font-weight: 900;
+      font-size: 2.25em;
+      padding-right:8px;
+      color:#878787;
+    }
     p{
       padding:0;
     }
@@ -319,12 +331,13 @@ label{
     padding-top:0.5rem;
   }
 
-  p {
+  p:has(span.callout) {
+    padding-top:2rem;
     > span.callout {
       display: flex;
       align-items: flex-start;
       padding: 20px 20px 20px 10px;
-      border-radius: 8px;
+      border-radius: 0.5rem;
       font-size: 16px;
       line-break:anywhere;
 
