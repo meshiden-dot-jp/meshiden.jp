@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Work from "@/components/layouts/top/work";
 import Profile from "@/components/layouts/top/profile";
@@ -9,36 +9,38 @@ import Techblog from "@/components/layouts/top/blog";
 import Contact from "@/components/layouts/top/contact";
 import Head from "next/head";
 
+type UnityLoadedMessage = { type: "UNITY_LOADED" };
+
+const isUnityLoadedMessage = (v: unknown): v is UnityLoadedMessage => {
+  if (!v || typeof v !== "object") return false;
+  return (v as { type?: unknown }).type === "UNITY_LOADED";
+};
+
 export default function Home() {
-  const fadeMs = 450;
+const fadeMs = 450;
 
   const [loadingVisible, setLoadingVisible] = useState(true);
   const [loadingFading, setLoadingFading] = useState(false);
 
-  const hideOverlayWithFade = () => {
+  const hideOverlayWithFade = useCallback(() => {
     if (!loadingVisible || loadingFading) return;
     setLoadingFading(true);
     window.setTimeout(() => {
       setLoadingVisible(false);
       setLoadingFading(false);
     }, fadeMs);
-  };
+  }, [loadingVisible, loadingFading, fadeMs]);
 
   useEffect(() => {
-    const onMessage = (event: MessageEvent) => {
+    const onMessage = (event: MessageEvent<unknown>) => {
       if (event.origin !== window.location.origin) return;
-
-      const data = event.data;
-      if (!data || typeof data !== "object") return;
-
-      if ((data as any).type === "UNITY_LOADED") {
-        hideOverlayWithFade();
-      }
+      if (!isUnityLoadedMessage(event.data)) return;
+      hideOverlayWithFade();
     };
 
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, [loadingVisible, loadingFading]);
+  }, [hideOverlayWithFade]);
 
   useEffect(() => {
     document.body.style.overflow = loadingVisible ? "hidden" : "auto";
