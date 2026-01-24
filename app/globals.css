@@ -384,24 +384,22 @@ label{
     }
   }
 
-  p:has(a span.external-link) span.external-link::after {
+  a span.external-link::after {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: "\f08e";
     padding-left: 6px;
     font-size: 0.8em;
-  }
+}
 
-  p {
-    > span.highlight {
-      font-weight: bold;
-      padding: 0 4px;
-      background: linear-gradient(
-        transparent 50%,
-        #fcff52 60% 90%,
-        transparent 90%
-      );
-    }
+ span.highlight {
+  font-weight: bold;
+  padding: 0 4px;
+    background: linear-gradient(
+      transparent 50%,
+      #fcff52 60% 90%,
+      transparent 90%
+    );
   }
 }
 
