@@ -17,7 +17,7 @@ const isUnityLoadedMessage = (v: unknown): v is UnityLoadedMessage => {
 };
 
 export default function Home() {
-const fadeMs = 450;
+const fadeMs = 550;
 
   const [loadingVisible, setLoadingVisible] = useState(true);
   const [loadingFading, setLoadingFading] = useState(false);
