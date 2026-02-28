@@ -35,7 +35,11 @@ const fadeMs = 550;
     const onMessage = (event: MessageEvent<unknown>) => {
       if (event.origin !== window.location.origin) return;
       if (!isUnityLoadedMessage(event.data)) return;
-      hideOverlayWithFade();
+
+      const extraDelay = 2500; 
+      window.setTimeout(() => {
+        hideOverlayWithFade();
+      }, extraDelay);
     };
 
     window.addEventListener("message", onMessage);
