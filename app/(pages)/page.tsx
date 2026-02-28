@@ -46,17 +46,10 @@ const fadeMs = 550;
     return () => window.removeEventListener("message", onMessage);
   }, [hideOverlayWithFade]);
 
-  useEffect(() => {
-    document.body.style.overflow = loadingVisible ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [loadingVisible]);
-
   return (
     <div className="overflow-hidden">
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 w-full h-full -z-10">
+        <div className="absolute inset-0 w-full h-full z-8">
           <iframe
             src="/unity/index.html"
             className="w-full h-full border-0 pointer-events-none blur-3xl scale-110"
@@ -68,16 +61,12 @@ const fadeMs = 550;
         {loadingVisible && (
           <div
             className={[
-              "fixed inset-0 z-[80] flex items-center justify-center bg-white text-black",
+              "absolute inset-0 z-9 bg-white",
               "transition-opacity ease-out",
               loadingFading ? "opacity-0" : "opacity-100",
             ].join(" ")}
             style={{ transitionDuration: `${fadeMs}ms` }}
           >
-            <div className="flex flex-col items-center gap-4">
-              <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/40 border-t-black" />
-              <p className="text-sm tracking-wide">Loading…</p>
-            </div>
           </div>
         )}
 
