@@ -5,6 +5,7 @@ import Biography from '@/components/layouts/profile/bios';
 import Award from '@/components/layouts/profile/awards';
 import Skills from '@/components/layouts/profile/skills'
 import Links from '@/components/layouts/profile/links';
+// import Publish from '@/components/layouts/profile/publish';
 
 const page = () => {
   return (
@@ -14,6 +15,7 @@ const page = () => {
       <Skills />
       <Biography />
       <Award />
+      {/* <Publish /> */}
       <Links />
           
     </div>

@@ -6,7 +6,6 @@ import Work from "@/components/layouts/top/work";
 import Profile from "@/components/layouts/top/profile";
 import News from "@/components/layouts/top/news";
 import Techblog from "@/components/layouts/top/blog";
-import Contact from "@/components/layouts/top/contact";
 import Head from "next/head";
 
 type UnityLoadedMessage = { type: "UNITY_LOADED" };
@@ -97,7 +96,7 @@ const fadeMs = 550;
         </main>
       </div>
 
-      <div className="sm:w-[70%] w-[90%] m-auto">
+      <div className="sm:w-[70%] w-[90%] m-auto mb-32">
         <div>
           <h1 id="work">作品一覧</h1>
           <Work />
@@ -113,10 +112,6 @@ const fadeMs = 550;
         <div>
           <h1 id="blog">技術ブログ</h1>
           <Techblog />
-        </div>
-        <div className="pb-32 bg-white">
-          <h1 id="contact">お問い合わせ</h1>
-          <Contact />
         </div>
       </div>
     </div>
