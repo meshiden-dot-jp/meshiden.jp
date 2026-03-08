@@ -25,6 +25,11 @@
   }
 }
 
+::selection {
+  background-color: yellow;
+  color: #000;
+}
+
 html{
   font-size: 15px;
   line-height:2rem;
@@ -58,6 +63,10 @@ h2{padding-top:64px; font-size: 1.383rem; padding-bottom:24px;}
 h3{padding-top:40px; font-size: 1.296rem; padding-bottom:24px;}
 h4{padding-top:40px; font-size: 1.215rem; padding-bottom:1rem;}
 h5{padding-top:40px; font-size: 1.138rem; padding-bottom:1rem;}
+
+.ac{
+  h3{padding-top:20px; font-size: 1.296rem; padding-bottom:20px;}
+}
 
 
 @media (min-width: 640px) {

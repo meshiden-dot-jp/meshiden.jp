@@ -60,7 +60,7 @@ const BreadcrumbComponent = () => {
                 <BreadcrumbList>
                     <BreadcrumbItem>
                         <BreadcrumbLink href="/">
-                            <i aria-label="ホームボタン" className="fa-solid fa-house"></i>
+                            <i aria-label="ホームボタン" className="fa-solid fa-house"><span className="hidden">ホーム</span></i>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     {pathSegments.map((segment, index) => {

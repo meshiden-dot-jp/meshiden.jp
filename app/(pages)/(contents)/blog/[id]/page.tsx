@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
         title: data.title,
         description: data.description,
         url: `${baseUrl}/tech-blog/${params.id}`,
+        type: "article",
         images: [{ url: data.header_image?.url || defaultOGP }],
       },
       twitter: {

@@ -26,7 +26,7 @@ export async function generateMetadata(
   const baseUrl = "https://meshiden.jp";
   let ogImage = defaultOGP;
   let title = "飯田優斗｜ポートフォリオサイト";
-  let description = "フロントエンドエンジニア兼UIデザイナー、飯田優斗のポートフォリオサイトです。";
+  let description = "飯田優斗のポートフォリオサイトです。過去に作成した作品や技術ブログ、最新のお知らせなどを掲載しています。また、経歴やスキルセットも紹介しています。飯田優斗の活動に興味がある方はぜひご覧ください。";
   let url = baseUrl;
 
   if (params?.id) {
@@ -54,6 +54,7 @@ export async function generateMetadata(
       title,
       description,
       url,
+      type: "website",
       images: [{ url: ogImage }],
     },
     twitter: {
@@ -72,6 +73,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/rvs7vvb.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/icon.png"></link>
+        <link rel="canonical" href="https://meshiden.jp"></link>
       </head>
       <body className={`${notoSansJP.variable} antialiased flex min-h-screen flex-col`}>
         <Header />

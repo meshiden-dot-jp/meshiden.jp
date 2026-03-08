@@ -20,7 +20,7 @@ const Header = () => {
         <div className='sticky top-0 w-full z-50 text-black bg-white/80 backdrop-saturate-[180%] backdrop-blur-xl no-print'>
             <div className='lg:h-14 h-12 w-[90%] m-auto flex justify-between items-center'>
                 <a className='flex' href="/">
-                    <p className='lg:text-3xl text-2xl leading-[48px] pr-4 font-[din-2014] font-bold'>IIDA</p>
+                    <p className='lg:text-3xl text-2xl leading-[48px] pr-4 font-[din-2014] font-bold select-none'>IIDA</p>
                 </a>
 
                 <div className='lg:hidden flex'>

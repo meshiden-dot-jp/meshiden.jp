@@ -8,7 +8,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { toast } from "sonner"
 import { useEffect } from "react";
 import { Separator } from "@/components/ui/separator"
-// import Link from "next/link";
+import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
@@ -61,14 +61,13 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="sm:w-[70%] w-[90%] m-auto pb-32 bg-white">
+    <div className="sm:w-[70%] w-[90%] m-auto pb-32 bg-white ac">
       <h1 id="contact">お問い合わせ</h1>
       <p>お問い合わせは次の２つの方法からお選びいただけます。必要に応じてご利用ください。</p>
       <Accordion
-        type="single"
-        collapsible
-        defaultValue="form"
-        className=""
+        type="multiple"
+        defaultValue={["notifications"]}
+        className="pt-8"
       >
         <AccordionItem value="form">
           <AccordionTrigger><h2 id="form" className="py-0 text-[1.296rem]">【一般】フォームでお問い合わせ</h2></AccordionTrigger>
@@ -175,14 +174,6 @@ const ContactPage = () => {
             <p>メールでのお問い合わせは次のアドレス宛にお願いいたします。</p>
             <small>※ [at]を@に変換してご利用ください</small>
             <address>contact[at]meshiden.jp</address>
-            {/* <p className="pb-12">
-              データの送信について、必要に応じて以下の公開鍵をご利用ください。
-            </p>
-            <div className="flex justify-center">
-              <Button asChild className=''>
-                <Link className="sm:w-[50%] w-full" href="/飯田優斗_0x5FCD7250_public.asc" download>PGP鍵をダウンロード</Link>
-              </Button>
-            </div> */}
           </AccordionContent>
         </AccordionItem>
         {/* <AccordionItem value="mail2">
@@ -193,8 +184,8 @@ const ContactPage = () => {
             <address>daman[at]rcl‑aoyama.jp</address>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="address">
-          <AccordionTrigger><h2 id="address" className="py-0 text-[1.296rem]">【研究】お手紙でお問い合わせ等</h2></AccordionTrigger>
+        <AccordionItem value="address" className="border-none">
+          <AccordionTrigger><h2 id="address" className="py-0 text-[1.296rem]">【研究】書簡などでお問い合わせ</h2></AccordionTrigger>
           <AccordionContent>
             <p>研究に関するお手紙でのお問い合わせは次の住所宛にお願いいたします。返信は2-3週お時間を頂戴する場合があります。</p>
             <address>
@@ -203,16 +194,15 @@ const ContactPage = () => {
           </AccordionContent>
         </AccordionItem> */}
       </Accordion>
-
-
-
-
-
-
-
-
-
-
+      <h2>PGP公開鍵</h2>
+      <p className="pb-12">
+        データの送信について、必要に応じて以下の公開鍵をご利用ください。
+      </p>
+      <div className="flex justify-center">
+        <Button asChild className=''>
+          <Link className="sm:w-[50%] w-full" href="/飯田優斗_0x5FCD7250_public.asc" download>PGP鍵をダウンロード</Link>
+        </Button>
+      </div>
       <iframe
         name="hidden_iframe"
         id="hidden_iframe"

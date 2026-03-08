@@ -18,11 +18,12 @@ const footer = () => {
                 </div>
                 <Image 
                     src="/wordmark.svg"
-                    alt="飯田優斗が背を向けてポーズを取っている画像"
+                    alt="ワードマーク"
                     width={0}
                     height={0}
                     sizes="100vw"
-                    className="w-full h-auto opacity-20"
+                    className="w-full h-auto select-none"
+                    draggable="false"
                 />
                 <Separator className='my-4'/>
                 <Copyright />
