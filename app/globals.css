@@ -26,8 +26,8 @@
 }
 
 ::selection {
-  background-color: yellow;
-  color: #000;
+  background-color: #111;
+  color: #fff;
 }
 
 html{

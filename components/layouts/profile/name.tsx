@@ -14,7 +14,7 @@ const name = () => {
         />
         <div className='w-full lg:pt-0 pt-6 sm:text-base text-sm'>
             
-            <p className='sm:text-4xl text-3xl font-bold sm:leading-[84px] leading-[64px]'>飯田 優斗<span className='sm:text-2xl text-xl pl-[5%]'>IIDA Yuto</span></p>
+            <p className='sm:text-4xl text-3xl font-bold sm:pt-0 pt-2 sm:pb-4 pb-2'>飯田 優斗<span className='sm:text-2xl text-xl pl-[5%]'>IIDA Yuto</span></p>
             <p className='pb-8'>青山学院大学 理工学部 情報テクノロジー学科 ４年
               {/* <br/><a href="https://www.rcl-aoyama.jp" target="_blank" rel="noopener noreferrer">戸辺研究室所属</a> */}
               </p>
