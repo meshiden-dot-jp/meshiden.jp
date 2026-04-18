@@ -33,7 +33,7 @@ export default async function DraftPage({ params, searchParams }: Props) {
 
   try {
     const blog = await client.get({
-      endpoint: "work",
+      endpoint: "tech-blog",
       contentId: slug,
       queries: { draftKey },
     });
