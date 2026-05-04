@@ -28,7 +28,7 @@ const categories: Category[] = [
       { label: 'Instagram', icon: <SiInstagram />, url: 'https://www.instagram.com/meshiden.jp/' },
     //   { label: 'TikTok',   icon: <SiTiktok />,    url: 'https://tiktok.com' },
       { label: 'X',         icon: <SiX />,         url: 'https://x.com/meshiden_jp' },
-      { label: 'Pinterest', icon: <SiPinterest />, url: 'https://jp.pinterest.com/meshidendotjp/_profile/' },
+      { label: 'Pinterest', icon: <SiPinterest />, url: 'https://pin.it/6jL1D0dA5' },
       { label: 'Reddit',    icon: <SiReddit />,    url: 'https://www.reddit.com/user/meahiden_jp/' },
     //   { label: 'Snapchat',  icon: <SiSnapchat />,  url: 'https://snapchat.com' },
       { label: 'Threads',   icon: <SiThreads />,   url: 'https://www.threads.com/@meshiden.jp' },
