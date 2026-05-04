@@ -78,10 +78,10 @@ const Page = () => {
       <h1>SNS</h1>
       {categories.map((category) => (
         <section key={category.label}>
-          <h2 className="text-sm font-semibold text-gray-500 mb-2 pt-12">
+          <h2 className="text-sm font-semibold text-gray-500 mb-2 pt-0 sm:pt-6 lg:pt-12">
             {category.label}
           </h2>
-          <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-8">
+          <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-8 pb-8 sm:pb-4 lg:pb-0">
             {category.items.map((item) => (
               <a
                 key={item.label}
