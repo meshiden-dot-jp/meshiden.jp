@@ -20,9 +20,11 @@ import {
   SiTiktok,
   SiSpotify,
   SiTwitch,
+  SiNote,
+  SiFigma,
 } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa'
-// import { Globe } from 'lucide-react'
+import { Globe } from 'lucide-react'
 
 type ServiceItem = {
   label: string
@@ -35,7 +37,7 @@ type Category = {
   items: ServiceItem[]
 }
 
-// const G = () => <Globe size={24} />
+const G = () => <Globe size={24} />
 
 const categories: Category[] = [
   {
@@ -61,11 +63,14 @@ const categories: Category[] = [
   {
     label: '開発',
     items: [
-      { label: 'GitHub',     icon: <SiGithub />,     url: 'https://github.com/meshiden-dot-jp' },
-      { label: 'Qiita',      icon: <SiQiita />,      url: 'https://qiita.com/meshiden-dot-jp' },
-      { label: 'Zenn',       icon: <SiZenn />,       url: 'https://zenn.dev/meshiden' },
+      { label: 'GitHub',     icon: <SiGithub />,      url: 'https://github.com/meshiden-dot-jp' },
+      { label: 'Figma',      icon: <SiFigma />,       url: 'https://www.figma.com/@meshiden_jp' },
+      { label: 'Qiita',      icon: <SiQiita />,       url: 'https://qiita.com/meshiden-dot-jp' },
+      { label: 'Zenn',       icon: <SiZenn />,        url: 'https://zenn.dev/meshiden' },
+      { label: 'Topaz',      icon: <G />,             url: 'https://topaz.dev/meshiden' },
+      { label: 'Note',       icon: <SiNote />,        url: 'https://note.com/meshidendotjp'},
       { label: 'Speakerdeck',icon: <SiSpeakerdeck />, url: 'https://speakerdeck.com/meshidendotjp' },
-      { label: 'Discord',    icon: <SiDiscord />,    url: 'https://discord.com/users/1287985017615679513' },
+      { label: 'Discord',    icon: <SiDiscord />,     url: 'https://discord.com/users/1287985017615679513' },
     ],
   },
   {
