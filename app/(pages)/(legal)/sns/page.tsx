@@ -25,6 +25,8 @@ import {
 } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa'
 import { Globe } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 type ServiceItem = {
   label: string
@@ -109,7 +111,13 @@ const Page = () => {
           </div>
         </section>
       ))}
-
+      <div className="flex justify-center pt-16S">
+        <Button asChild>
+          <Link className="sm:w-[50%] w-full" href="/">
+            トップへ戻る
+          </Link>
+        </Button>
+      </div>
     </div>
   )
 }

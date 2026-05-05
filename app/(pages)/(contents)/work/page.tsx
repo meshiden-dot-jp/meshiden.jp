@@ -151,7 +151,7 @@ function WorkPageInner() {
           <div className="flex justify-center">
             <Button asChild>
               <Link className="sm:w-[50%] w-full" href="/">
-                ホームへ戻る
+                トップへ戻る
               </Link>
             </Button>
           </div>
@@ -165,7 +165,7 @@ function WorkPageInner() {
           <div className="flex justify-center">
             <Button asChild>
               <Link className="sm:w-[50%] w-full" href="/">
-                ホームへ戻る
+                トップへ戻る
               </Link>
             </Button>
           </div>

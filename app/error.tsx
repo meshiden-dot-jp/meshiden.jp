@@ -21,7 +21,7 @@ const error = () => {
 
             <div className="flex justify-center pt-10">
                 <Button asChild className='mt-3 mb-24 sm:mt-20'>
-                    <Link className="sm:w-[50%] w-full" href="/">ホームへ戻る</Link>
+                    <Link className="sm:w-[50%] w-full" href="/">トップへ戻る</Link>
                 </Button>
 
             </div>
