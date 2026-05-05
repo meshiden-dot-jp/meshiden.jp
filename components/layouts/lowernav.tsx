@@ -8,6 +8,7 @@ const lowernav = () => {
       <li><a href="/ai"><small>AIポリシー</small></a></li>
       <li><a href="/accessibility"><small>ウェブアクセシビリティ</small></a></li>
       <li><a href="/pride"><small>プライドポリシー</small></a></li>
+      {/* <li><a href="/sns"><small>SNS</small></a></li> */}
     </>
   )
 }
