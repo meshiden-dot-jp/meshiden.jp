@@ -1,0 +1,29 @@
+Sub チケット作成()
+    Dim ws1 As Worksheet
+    Dim ws2 As Worksheet
+    Set ws1 = Worksheets("パラメーター")
+    Set ws2 = Worksheets("チケット")
+    
+    Dim s As Long, g As Long, r As Long, Path As String
+    Dim i As Long, j As Long
+    Dim w As Long
+    Dim num As Long
+    
+    s = ws1.Cells(5, 2).Value
+    g = ws1.Cells(6, 2).Value
+    r = g - s + 1
+    w = 4
+    num = 4
+    
+    If r Mod num <> 0 Then g = g + (num - (r Mod num))
+    
+    r = g - s + 1
+    r = r \ num
+    
+    For i = 1 To r
+        For j = 1 To num
+            ws2.Cells(1, w * j - (w - 1)) = s + r * (j - 1) + (i - 1)
+        Next j
+        ws2.PrintOut
+    Next i
+End Sub

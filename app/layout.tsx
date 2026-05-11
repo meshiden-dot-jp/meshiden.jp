@@ -80,7 +80,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${notoSansJP.variable} antialiased flex min-h-screen flex-col`}>
         <Header />
         <Toaster position="top-right" />
-        <div className="flex-grow">{children}</div>
+        <div className="flex-grow overflow-hidden">{children}</div>
         <BreadcrumbWrapper />
         <Footer />
 

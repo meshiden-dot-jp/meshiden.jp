@@ -17,10 +17,13 @@ const name = () => {
               <div className="balloon4-inner">
                 <p className=' leading-6'>
                   アソビ心が挑戦のカギ🔑<br />
-                  このサイトの<a href="/" className="text-blue-500 hover:underline">トップページ</a>にある、動くシルエットは見つけられましたか？
+                  このサイトの<a href="/" className="text-blue-500 hover:underline">トップページ</a>上部にある、動くシルエットは見つけられましたか？
                 </p>
               </div>
           </div>
+          {/* <div className='absolute bottom-[-16%] lg:bottom-[-12%] right-[-14%] lg:right-[-18%] w-[50%] h-[50%] rotate-[-20deg]'>
+            <img src="/image/sticker.png" alt="sticker" />
+          </div> */}
         </div>
         <div className='w-full lg:pt-0 pt-6 sm:text-base text-sm'>
             
