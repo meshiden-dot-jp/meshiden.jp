@@ -111,7 +111,7 @@ const Page = () => {
           </div>
         </section>
       ))}
-      <div className="flex justify-center pt-16S">
+      <div className="flex justify-center pt-16">
         <Button asChild>
           <Link className="sm:w-[50%] w-full" href="/">
             トップへ戻る
