@@ -4,6 +4,7 @@
 import React from 'react'
 import Lowernav from './lowernav'
 import Nav from './nav'
+import AlgoliaSearch from './algolia-search'
 
 import {
     Sheet,
@@ -23,7 +24,8 @@ const Header = () => {
                     <p className='lg:text-3xl text-2xl leading-[48px] pr-4 font-[din-2014] font-bold select-none'>IIDA</p>
                 </a>
 
-                <div className='lg:hidden flex'>
+                <div className='lg:hidden flex items-center gap-2'>
+                    <AlgoliaSearch />
                     <Sheet>
                         <SheetTrigger aria-label="メニューバー"><i className="fa-solid fa-bars"></i></SheetTrigger>
                         <SheetContent className='w-screen pt-24'>
@@ -43,9 +45,12 @@ const Header = () => {
                     </Sheet>
                 </div>
 
-                <ul id='header'  className='gap-8 font-bold lg:flex hidden text-sm'>
-                    <Nav />
-                </ul>
+                <div className='gap-4 font-bold lg:flex hidden text-sm items-center'>
+                    <ul id='header' className='gap-8 font-bold flex text-sm'>
+                        <Nav />
+                    </ul>
+                    <AlgoliaSearch />
+                </div>
             </div>
         </div>
     )

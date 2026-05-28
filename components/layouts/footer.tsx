@@ -8,16 +8,6 @@ const footer = () => {
     return (
         <div className='bg-[#f5f5f7] text-[#6c6c6c] py-8 no-print'>
             <div className='h-auto w-[90%]  m-auto'>
-                <small className="flex gap-[2px] pt-2 leading-6 before:content-['※']">
-                    <span>
-                        本サイト内のイラストには一部、Googleが提供する
-                        <a href="https://gemini.google.com/app" className='b'>Gemini</a>
-                        を使用して作成したものが含まれます。
-                    </span>
-                </small>
-                <small className="flex gap-[2px] leading-6 before:content-['※']">
-                    <span>本サイト内の画像およびイラストの無断使用はこれを禁止します。</span>
-                </small>
                 {/* <Separator className='my-8'/> */}
                 <div className='lg:flex lg:flex-row-reverse justify-between mt-8 mb-16'>
                     {/* <div className='flex justify-center pb-6'>
@@ -28,16 +18,26 @@ const footer = () => {
                     </ul>
                     <Copyright />
                 </div>
+                {/* <small className="flex gap-[2px] pt-2 leading-6 before:content-['※']">
+                    <span>
+                        本サイト内のイラストには一部、Googleが提供する
+                        <a href="https://gemini.google.com/app" className='b'>Gemini</a>
+                        を使用して作成したものが含まれます。
+                    </span>
+                </small>
+                <small className="flex gap-[2px] leading-6 before:content-['※'] mb-16">
+                    <span>本サイト内の画像およびイラストの無断使用はこれを禁止します。</span>
+                </small> */}
                 {/* <Separator className='my-8'/> */}
-                    <Image 
-                        src="/wordmark.svg"
-                        alt="ワードマーク"
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        className="w-full h-auto select-none"
-                        draggable="false"
-                    />
+                <Image
+                    src="/wordmark.svg"
+                    alt="ワードマーク"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-auto select-none"
+                    draggable="false"
+                />
             </div>
         </div>
     )

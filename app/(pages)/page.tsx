@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Work from "@/components/layouts/top/work";
 import Profile from "@/components/layouts/top/profile";
@@ -16,10 +16,16 @@ const isUnityLoadedMessage = (v: unknown): v is UnityLoadedMessage => {
 };
 
 export default function Home() {
-const fadeMs = 550;
+  const fadeMs = 550;
 
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [loadingVisible, setLoadingVisible] = useState(true);
   const [loadingFading, setLoadingFading] = useState(false);
+  // const [isPrideMonth, setIsPrideMonth] = useState(false);
+
+  // useEffect(() => {
+  //   setIsPrideMonth(new Date().getMonth() === 5);
+  // }, []);
 
   const hideOverlayWithFade = useCallback(() => {
     if (!loadingVisible || loadingFading) return;
@@ -27,7 +33,7 @@ const fadeMs = 550;
     window.setTimeout(() => {
       setLoadingVisible(false);
       setLoadingFading(false);
-    }, fadeMs);    
+    }, fadeMs);
   }, [loadingVisible, loadingFading, fadeMs]);
 
   useEffect(() => {
@@ -35,7 +41,7 @@ const fadeMs = 550;
       if (event.origin !== window.location.origin) return;
       if (!isUnityLoadedMessage(event.data)) return;
 
-      const extraDelay = 2500; 
+      const extraDelay = 2500;
       window.setTimeout(() => {
         hideOverlayWithFade();
       }, extraDelay);
@@ -45,11 +51,16 @@ const fadeMs = 550;
     return () => window.removeEventListener("message", onMessage);
   }, [hideOverlayWithFade]);
 
+  useEffect(() => {
+    iframeRef.current?.setAttribute("allow", "autoplay");
+  }, []);
+
   return (
     <div className="overflow-hidden">
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full z-8 select-none">
           <iframe
+            ref={iframeRef}
             src="/unity/index.html"
             className="w-full h-full border-0 pointer-events-none blur-3xl scale-110"
             allowFullScreen
@@ -98,8 +109,13 @@ const fadeMs = 550;
           </div>
         </main>
       </div>
-
       <div className="sm:w-[70%] w-[90%] m-auto mb-32">
+        {/* {isPrideMonth && (
+          <p className="text-center my-12 text-base leading-relaxed">
+            すべての人が自分らしく生きられる社会を願って<br />
+            プライド月間はデザインを一部変更しています
+          </p>
+        )} */}
         <div>
           <h2 id="work">作品一覧</h2>
           <Work />

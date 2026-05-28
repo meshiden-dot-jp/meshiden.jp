@@ -7,6 +7,7 @@ import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import Script from "next/script";
 import BreadcrumbWrapper from "@/components/layouts/breadcrumbwrapper";
+import ConsoleArt from "@/components/console-art";
 
 // ✅ フォント設定（Noto Sans JP）
 const notoSansJP = Noto_Sans_JP({
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="flex-grow overflow-hidden">{children}</div>
         <BreadcrumbWrapper />
         <Footer />
+        <ConsoleArt />
 
         {/* ✅ FontAwesome */}
         <Script src="https://kit.fontawesome.com/4e6b2556d7.js" strategy="afterInteractive" />

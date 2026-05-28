@@ -6,7 +6,16 @@ import rehypePrettyCode from "rehype-pretty-code";
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
+  transpilePackages: [
+    'algoliasearch',
+    '@algolia/client-common',
+    '@algolia/client-search',
+    '@algolia/client-analytics',
+    '@algolia/client-insights',
+    '@algolia/requester-browser-xhr',
+    '@algolia/requester-fetch',
+    '@algolia/requester-node-http',
+  ],
 
   images: {
     remotePatterns: [
