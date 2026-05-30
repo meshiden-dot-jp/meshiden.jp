@@ -59,8 +59,7 @@ function HitComponent({ hit, onClose }: { hit: ContentHit; onClose: () => void }
 const PLACEHOLDERS = [
   "サイト内のすべての記事を検索できます",
   "例えば「Next.js」などで検索してみてください",
-  "タイトルの一部や内容のキーワードで検索できます",
-  "例えば「JavaScript」などで検索してみてください",
+  "例えば「Unity」などで検索してみてください",
 ];
 
 function CustomSearchBox({ placeholder }: { placeholder: string }) {

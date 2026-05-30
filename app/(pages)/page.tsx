@@ -24,7 +24,7 @@ export default function Home() {
   // const [isPrideMonth, setIsPrideMonth] = useState(false);
 
   // useEffect(() => {
-  //   setIsPrideMonth(new Date().getMonth() === 5);
+  //   setIsPrideMonth(new Date().getMonth() === 4);
   // }, []);
 
   const hideOverlayWithFade = useCallback(() => {
@@ -54,7 +54,6 @@ export default function Home() {
   useEffect(() => {
     iframeRef.current?.setAttribute("allow", "autoplay");
   }, []);
-
   return (
     <div className="overflow-hidden">
       <div className="relative overflow-hidden">
@@ -88,7 +87,6 @@ export default function Home() {
               href="https://res.cloudinary.com/dxsccj7j7/image/upload/v1747444269/IMG_8945_hcewea.jpg"
             />
           </Head>
-
           <Image
             className="sm:max-w-[50%] sm:w-auto w-[100%] sm:max-h-[80vh] sm:h-auto mx-auto sm:mx-0 sm:pt-0 relative sm:ml-auto z-0 rounded-[12%] object-cover aspect-square select-none"
             src="https://res.cloudinary.com/dxsccj7j7/image/upload/f_auto,q_auto/v1747444269/IMG_8945_hcewea.jpg"
@@ -98,8 +96,7 @@ export default function Home() {
             priority
             loading="eager"
             draggable="false"
-          />
-
+          />         
           <div className="sm:absolute relative sm:bottom-[10px] bottom-auto pt-12 font-bold">
             <p className="sm:text-[5vw] text-[9vw] w-fit mb-2 select-none">飯田優斗の</p>
             <p className="sm:text-[9vw] text-[18vw] sm:leading-relaxed leading-snug font-black p-0 select-none">
@@ -110,12 +107,6 @@ export default function Home() {
         </main>
       </div>
       <div className="sm:w-[70%] w-[90%] m-auto mb-32">
-        {/* {isPrideMonth && (
-          <p className="text-center my-12 text-base leading-relaxed">
-            すべての人が自分らしく生きられる社会を願って<br />
-            プライド月間はデザインを一部変更しています
-          </p>
-        )} */}
         <div>
           <h2 id="work">作品一覧</h2>
           <Work />
