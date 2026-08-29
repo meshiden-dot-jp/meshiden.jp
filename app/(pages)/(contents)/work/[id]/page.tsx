@@ -4,6 +4,7 @@ import { Blog } from "@/app/types/blog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -11,6 +12,41 @@ import rehypeReact from "rehype-react";
 import React from "react";
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const baseUrl = "https://meshiden.jp";
+  const defaultOGP = `${baseUrl}/ogp-default.jpg`;
+
+  try {
+    const data = await client.get({ endpoint: `work/${params.id}` });
+
+    return {
+      title: data.title,
+      description: data.description || "飯田優斗の作品紹介ページです。",
+      alternates: {
+        canonical: `${baseUrl}/work/${params.id}`,
+      },
+      openGraph: {
+        title: data.title,
+        description: data.description,
+        url: `${baseUrl}/work/${params.id}`,
+        type: "article",
+        images: [{ url: data.header_image?.url || defaultOGP }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: data.title,
+        description: data.description,
+        images: [data.header_image?.url || defaultOGP],
+      },
+    };
+  } catch (error) {
+    console.error("OGPメタデータ取得エラー:", error);
+    return {
+      title: "作品が見つかりませんでした",
+      description: "指定された作品は存在しないか、読み込みに失敗しました。",
+    };
+  }
+}
 
 // ブログの詳細データを取得する関数
 async function getBlogData(id: string | undefined): Promise<Blog | null> {

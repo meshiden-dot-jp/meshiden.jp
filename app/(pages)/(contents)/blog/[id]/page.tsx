@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
     return {
       title: data.title,
-      description: data.description || "iIDaの技術ブログ記事です。",
+      description: data.description || "飯田優斗の技術ブログ記事です。",
       alternates: {
         canonical: `${baseUrl}/blog/${params.id}`,
       },
