@@ -1,4 +1,11 @@
 import React from 'react'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://meshiden.jp/ai",
+  },
+};
 
 export default function aipolicy() {
     return (
