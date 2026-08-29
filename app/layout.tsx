@@ -48,9 +48,12 @@ export async function generateMetadata(
     }
   }
 
-  return {
+    return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title,
       description,
@@ -76,7 +79,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/icon.png"></link>
-        <link rel="canonical" href="https://meshiden.jp"></link>
       </head>
       <body className={`${notoSansJP.variable} antialiased flex min-h-screen flex-col`}>
         <Header />

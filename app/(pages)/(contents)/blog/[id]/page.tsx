@@ -23,10 +23,13 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     return {
       title: data.title,
       description: data.description || "iIDaの技術ブログ記事です。",
+      alternates: {
+        canonical: `${baseUrl}/blog/${params.id}`,
+      },
       openGraph: {
         title: data.title,
         description: data.description,
-        url: `${baseUrl}/tech-blog/${params.id}`,
+        url: `${baseUrl}/blog/${params.id}`,
         type: "article",
         images: [{ url: data.header_image?.url || defaultOGP }],
       },
