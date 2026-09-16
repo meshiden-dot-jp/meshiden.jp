@@ -35,14 +35,30 @@ type ApiEndpoint = keyof typeof API_ENDPOINT_CONFIG;
 const WEBHOOK_SECRET = process.env.MESHIDEN_WEBHOOK_SECRET!;
 const SITE_BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://meshiden.jp";
 
-const twitterClient = new TwitterApi({
-  appKey: process.env.X_API_KEY!,
-  appSecret: process.env.X_API_SECRET!,
-  accessToken: process.env.X_ACCESS_TOKEN!,
-  accessSecret: process.env.X_ACCESS_TOKEN_SECRET!,
-});
+function getTwitterClient(): TwitterApi {
+  return new TwitterApi({
+    appKey: process.env.X_API_KEY!,
+    appSecret: process.env.X_API_SECRET!,
+    accessToken: process.env.X_ACCESS_TOKEN!,
+    accessSecret: process.env.X_ACCESS_TOKEN_SECRET!,
+  });
+}
+
+export async function GET() {
+  // 動作確認用。実際の通知はPOSTで届く
+  return NextResponse.json({ ok: true });
+}
 
 export async function POST(req: NextRequest) {
+  // 診断ログ：各環境変数が読み込めているかどうか（値そのものは出さない）
+  console.log("ENV CHECK", {
+    hasWebhookSecret: !!process.env.MESHIDEN_WEBHOOK_SECRET,
+    hasApiKey: !!process.env.X_API_KEY,
+    hasApiSecret: !!process.env.X_API_SECRET,
+    hasAccessToken: !!process.env.X_ACCESS_TOKEN,
+    hasAccessTokenSecret: !!process.env.X_ACCESS_TOKEN_SECRET,
+  });
+
   // 1. 署名の検証
   // カスタム通知の設定画面で「シークレット」に設定した値と同じものを
   // MESHIDEN_WEBHOOK_SECRET に設定しておく
@@ -90,6 +106,7 @@ export async function POST(req: NextRequest) {
   const tweetText = buildTweetText(title, contentUrl, label);
 
   try {
+    const twitterClient = getTwitterClient();
     const tweet = await twitterClient.v2.tweet(tweetText);
     return NextResponse.json({ success: true, tweetId: tweet.data.id });
   } catch (err) {
