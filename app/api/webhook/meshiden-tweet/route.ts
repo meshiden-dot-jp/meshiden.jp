@@ -85,13 +85,18 @@ export async function POST(req: NextRequest) {
   }
 
   // 3. 新規公開時のみツイートする
-  // typeが"new"でも下書き保存の場合があるため、公開ステータスも確認する
+  // typeが"new"かどうかではなく、公開ステータスが「非公開→公開」に
+  // 変わったかどうかで判定する（下書きを後から公開した場合はtypeが"edit"になるため）
   const newContent = payload.contents?.new;
-  const isNewlyPublished =
-    payload.type === "new" && newContent?.status.includes("PUBLISH");
+  const oldContent = payload.contents?.old;
+  const wasPublishedBefore = oldContent?.status.includes("PUBLISH") ?? false;
+  const isPublishedNow = newContent?.status.includes("PUBLISH") ?? false;
+  const isNewlyPublished = isPublishedNow && !wasPublishedBefore;
 
   if (!isNewlyPublished || !newContent?.publishValue) {
-    console.log(`Webhook skipped: type=${payload.type}, status=${newContent?.status}`);
+    console.log(
+      `Webhook skipped: type=${payload.type}, wasPublishedBefore=${wasPublishedBefore}, isPublishedNow=${isPublishedNow}`
+    );
     return NextResponse.json({ skipped: true, reason: "not a new publish" });
   }
 
