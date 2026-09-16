@@ -22,10 +22,11 @@ type MicroCmsContentSnapshot = {
 };
 
 // APIエンドポイント名ごとの設定
-// endpoint はmicroCMS側のAPI設定画面で確認できる値と一致させる
+// キーはmicroCMSの「API設定」→「基本情報」に表示される実際のエンドポイント名と一致させる
+// （表示名ではなく、URLにも出てくるエンドポイント名なので注意）
 const API_ENDPOINT_CONFIG = {
-  articles: { pathPrefix: "articles", label: "記事" },
-  works: { pathPrefix: "works", label: "作品" },
+  "tech-blog": { pathPrefix: "blog", label: "記事" },
+  work: { pathPrefix: "work", label: "作品" },
 } as const;
 
 type ApiEndpoint = keyof typeof API_ENDPOINT_CONFIG;
@@ -63,6 +64,7 @@ export async function POST(req: NextRequest) {
   const endpoint = payload.api;
   if (!isKnownEndpoint(endpoint)) {
     // 対応していないAPIからの通知は無視する
+    console.log(`Webhook skipped: unknown api "${endpoint}"`);
     return NextResponse.json({ skipped: true, reason: `unknown api: ${endpoint}` });
   }
 
@@ -73,6 +75,7 @@ export async function POST(req: NextRequest) {
     payload.type === "new" && newContent?.status.includes("PUBLISH");
 
   if (!isNewlyPublished || !newContent?.publishValue) {
+    console.log(`Webhook skipped: type=${payload.type}, status=${newContent?.status}`);
     return NextResponse.json({ skipped: true, reason: "not a new publish" });
   }
 
