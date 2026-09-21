@@ -10,7 +10,8 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mail:preview": "npx --yes tsx scripts/preview-mail.ts && open /tmp/mail-preview.html"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-react": "^0.13.0",
