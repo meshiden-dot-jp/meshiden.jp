@@ -93,7 +93,7 @@ const cspHeader = `
     style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://use.fontawesome.com https://use.typekit.net https://p.typekit.net https://ka-f.fontawesome.com;
     font-src 'self' data: https://cdnjs.cloudflare.com https://use.fontawesome.com https://use.typekit.net https://p.typekit.net https://ka-f.fontawesome.com;
     img-src 'self' data: https://images.microcms-assets.io https://res.cloudinary.com https://placehold.jp https://nextjs.org https://example.com https://use.typekit.net;
-    connect-src 'self' https://ka-f.fontawesome.com https://www.google.com https://www.gstatic.com https://use.typekit.net;
+    connect-src 'self' https://ka-f.fontawesome.com https://www.google.com https://www.gstatic.com https://use.typekit.net https://*.microcms.io https://*.algolia.net https://*.algolianet.com;
     manifest-src 'self';
     object-src 'none';
     frame-ancestors 'none';
