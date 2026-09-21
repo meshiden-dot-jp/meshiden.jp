@@ -96,7 +96,7 @@ const cspHeader = `
     connect-src 'self' https://ka-f.fontawesome.com https://www.google.com https://www.gstatic.com https://use.typekit.net https://*.microcms.io https://*.algolia.net https://*.algolianet.com;
     manifest-src 'self';
     object-src 'none';
-    frame-ancestors 'none';
+    frame-ancestors 'self';
     block-all-mixed-content;
     upgrade-insecure-requests;
 `;
