@@ -1,8 +1,28 @@
 import React from 'react'
 import type { Metadata } from 'next'
 
+const url = 'https://meshiden.jp/disclaimer'
+const title = '免責事項｜飯田優斗のポートフォリオサイト'
+const description = '当サイトの情報の正確性やご利用にあたっての免責事項について説明しています。'
+const ogImage = 'https://meshiden.jp/ogp-default.jpg'
+
 export const metadata: Metadata = {
-    alternates: { canonical: 'https://meshiden.jp/disclaimer' },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+        title,
+        description,
+        url,
+        type: 'website',
+        images: [{ url: ogImage }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [ogImage],
+    },
 }
 
 const page = () => {

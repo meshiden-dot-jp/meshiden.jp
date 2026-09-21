@@ -1,8 +1,28 @@
 import React from 'react'
 import type { Metadata } from 'next'
 
+const url = 'https://meshiden.jp/ai'
+const title = 'AIポリシー｜飯田優斗のポートフォリオサイト'
+const description = '当サイトにおけるAIの利用目的や方針について説明しています。'
+const ogImage = 'https://meshiden.jp/ogp-default.jpg'
+
 export const metadata: Metadata = {
-    alternates: { canonical: 'https://meshiden.jp/ai' },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+        title,
+        description,
+        url,
+        type: 'website',
+        images: [{ url: ogImage }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [ogImage],
+    },
 }
 
 export default function aipolicy() {

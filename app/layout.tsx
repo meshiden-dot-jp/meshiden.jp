@@ -20,6 +20,33 @@ const notoSansJP = Noto_Sans_JP({
 // ✅ デフォルトOGP画像
 const defaultOGP = "https://meshiden.jp/ogp-default.jpg";
 
+// ✅ 構造化データ（JSON-LD）
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "飯田優斗",
+  url: "https://meshiden.jp",
+  jobTitle: "フロントエンドエンジニア / UIデザイナー",
+  sameAs: [
+    "https://x.com/meshiden_jp",
+    "https://github.com/meshiden-dot-jp",
+    "https://www.instagram.com/meshiden.jp/",
+    "https://www.linkedin.com/in/%E5%84%AA%E6%96%97-%E9%A3%AF%E7%94%B0-05b7a8406/",
+    "https://www.youtube.com/@meshiden-dot-jp",
+    "https://qiita.com/meshiden-dot-jp",
+    "https://zenn.dev/meshiden",
+    "https://www.behance.net/meganenasi61c5",
+    "https://www.figma.com/@meshiden_jp",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "飯田優斗｜ポートフォリオサイト",
+  url: "https://meshiden.jp",
+};
+
 // ✅ メタデータを動的に生成
 export async function generateMetadata(
   { params }: { params: { id?: string } }
@@ -79,6 +106,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/icon.png"></link>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body className={`${notoSansJP.variable} antialiased flex min-h-screen flex-col`}>
         <Header />

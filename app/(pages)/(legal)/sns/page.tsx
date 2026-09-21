@@ -29,8 +29,28 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import type { Metadata } from 'next'
 
+const url = 'https://meshiden.jp/sns'
+const title = 'SNS｜飯田優斗のポートフォリオサイト'
+const description = '飯田優斗が運用している各種SNSアカウントの一覧です。'
+const ogImage = 'https://meshiden.jp/ogp-default.jpg'
+
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://meshiden.jp/sns' },
+  title,
+  description,
+  alternates: { canonical: url },
+  openGraph: {
+    title,
+    description,
+    url,
+    type: 'website',
+    images: [{ url: ogImage }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: [ogImage],
+  },
 }
 
 type ServiceItem = {

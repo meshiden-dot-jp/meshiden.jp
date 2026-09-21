@@ -1,13 +1,14 @@
 import React from 'react'
+import Link from 'next/link'
 
 const lists = () => {
     return (
         <>
-            <li><a href="/work">作品一覧</a></li>
-            <li><a href="/profile">自己紹介</a></li>
-            <li><a href="/news">お知らせ</a></li>
-            <li><a href="/blog">技術ブログ</a></li>
-            <li><a href="/contact">お問い合わせ</a></li>
+            <li><Link href="/work">作品一覧</Link></li>
+            <li><Link href="/profile">自己紹介</Link></li>
+            <li><Link href="/news">お知らせ</Link></li>
+            <li><Link href="/blog">技術ブログ</Link></li>
+            <li><Link href="/contact">お問い合わせ</Link></li>
         </>
     )
 }

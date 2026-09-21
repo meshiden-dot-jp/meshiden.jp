@@ -1,8 +1,28 @@
 import React from 'react'
 import type { Metadata } from 'next'
 
+const url = 'https://meshiden.jp/pride'
+const title = 'プライドポリシー｜飯田優斗のポートフォリオサイト'
+const description = '多様性と包摂性を大切にした、飯田優斗の制作・開発におけるプライドポリシーです。'
+const ogImage = 'https://meshiden.jp/ogp-default.jpg'
+
 export const metadata: Metadata = {
-    alternates: { canonical: 'https://meshiden.jp/pride' },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+        title,
+        description,
+        url,
+        type: 'website',
+        images: [{ url: ogImage }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [ogImage],
+    },
 }
 
 const PridePolicyPage = () => {

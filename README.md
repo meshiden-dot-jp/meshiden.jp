@@ -26,15 +26,23 @@
 
 /profile：プロフィール
 
-/work/[id]：制作実績（IDごとの詳細ページ）
+/work, /work/[id]：制作実績一覧・IDごとの詳細ページ
 
-/blog/[id]：ブログ記事詳細
+/blog, /blog/[id]：技術ブログ一覧・記事詳細（?tag= でカテゴリ絞り込み）
 
 /news：お知らせ
 
 /contact：問い合わせ
 
-/legal/privacy, /legal/pride など：法的情報・ポリシー
+/sns：SNSアカウント一覧
+
+/privacy, /disclaimer, /ai, /accessibility, /pride：法的情報・ポリシー（`app/(pages)/(legal)/` 配下、URLに `/legal` は付かない）
+
+## SEO / メタデータ
+
+- 各ページの `<title>` / `description` / OGP・Twitterカード / canonical URL は、対応するルート内の `page.tsx`（サーバーコンポーネント）または `layout.tsx`（`"use client"` な page.tsx に対して）で個別に定義しています。ルート直下の `app/layout.tsx` はサイト全体のフォールバック（トップページ用）のみを担い、各ページはそれを上書きする形です。
+- サイトマップは `next-sitemap`（`next-sitemap.config.js`）により `npm run build` の `postbuild` で自動生成され、`public/sitemap.xml` / `public/sitemap-0.xml` に出力されます。管理者権限限定の `/draft-b`, `/draft-w` は生成対象から除外し、`noindex` も設定しています。
+- サイト全体の構造化データ（Person / WebSite の JSON-LD）は `app/layout.tsx` に定義しています。
 
 ## コンタクト
 サイト上のフォーム、または以下の連絡先よりお問い合わせください。

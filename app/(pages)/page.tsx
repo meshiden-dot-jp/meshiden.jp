@@ -6,7 +6,6 @@ import Work from "@/components/layouts/top/work";
 import Profile from "@/components/layouts/top/profile";
 import News from "@/components/layouts/top/news";
 import Techblog from "@/components/layouts/top/blog";
-import Head from "next/head";
 
 type UnityLoadedMessage = { type: "UNITY_LOADED" };
 
@@ -80,13 +79,6 @@ export default function Home() {
         )}
 
         <main className="relative w-[90%] m-auto mb-[4%] pt-[5vh] z-10">
-          <Head>
-            <link
-              rel="preload"
-              as="image"
-              href="https://res.cloudinary.com/dxsccj7j7/image/upload/v1747444269/IMG_8945_hcewea.jpg"
-            />
-          </Head>
           <Image
             className="sm:max-w-[50%] sm:w-auto w-[100%] sm:max-h-[80vh] sm:h-auto mx-auto sm:mx-0 sm:pt-0 relative sm:ml-auto z-0 rounded-[12%] object-cover aspect-square select-none"
             src="https://res.cloudinary.com/dxsccj7j7/image/upload/f_auto,q_auto/v1747444269/IMG_8945_hcewea.jpg"
