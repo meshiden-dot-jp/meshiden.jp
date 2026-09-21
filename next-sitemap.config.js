@@ -32,7 +32,7 @@ const fetchMicroCMSPaths = async (endpoint) => {
 module.exports = {
   siteUrl: 'https://meshiden.jp',
   generateRobotsTxt: true,
-  exclude: ['/draft/*'],
+  exclude: ['/draft-b', '/draft-b/*', '/draft-w', '/draft-w/*'],
   additionalPaths: async (config) => {
     const [blogPosts, workPosts] = await Promise.all([
       fetchMicroCMSPaths('tech-blog'),

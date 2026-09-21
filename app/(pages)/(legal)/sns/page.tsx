@@ -27,6 +27,11 @@ import { FaLinkedin } from 'react-icons/fa'
 import { Globe } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://meshiden.jp/sns' },
+}
 
 type ServiceItem = {
   label: string

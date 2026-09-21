@@ -1,13 +1,15 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+    robots: { index: false, follow: false },
+}
 
 const notfound = () => {
     return (
         <>
-        <head>
-            <meta name="robots" content="noindex, nofollow" />
-        </head>
         <div className="sm:w-[70%] w-[90%] m-auto flex-grow">
             <h1 className=''>###</h1>
             <div className='sm:flex gap-12'>
