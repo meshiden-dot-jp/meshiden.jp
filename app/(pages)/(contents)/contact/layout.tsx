@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import RecaptchaProvider from "@/components/recaptcha-provider";
 
 const url = "https://meshiden.jp/contact";
 const title = "お問い合わせ｜飯田優斗のポートフォリオサイト";
@@ -25,5 +26,5 @@ export const metadata: Metadata = {
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <RecaptchaProvider>{children}</RecaptchaProvider>;
 }

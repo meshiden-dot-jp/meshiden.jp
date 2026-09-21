@@ -4,7 +4,7 @@ const serviceDomain = process.env.NEXT_PUBLIC_SERVICE_DOMAIN;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
 if (!serviceDomain || !apiKey) {
-  throw new Error("microCMS env が不足しています。GCP の env / Secrets を確認してください。");
+  throw new Error("microCMS env が不足しています。Amplify の環境変数を確認してください。");
 }
 
 export const client = createClient({

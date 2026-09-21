@@ -22,6 +22,7 @@ const ContactPage = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (sessionStorage.getItem("toastSuccess")) {
@@ -32,32 +33,36 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
 
-    if (!executeRecaptcha) {
-      console.error("reCAPTCHA not loaded");
-      toast.error("reCAPTCHAの読み込みに失敗しました。");
-      return;
-    }
-
+    // 完了メールはあくまで付加機能。reCAPTCHAが使えなくても問い合わせ自体は送信する。
+    let token: string | null = null;
     try {
-      // 1秒遅延させて Google フォームに送信
-      setTimeout(() => {
-        const form = document.getElementById("contact-form") as HTMLFormElement;
-        if (form) {
-          form.submit();
-        }
-
-        sessionStorage.setItem("toastSuccess", "true");
-
-        setTimeout(() => {
-          window.location.reload()
-        }, 1500);
-
-      }, 1000);
+      token = executeRecaptcha ? await executeRecaptcha("contact") : null;
     } catch (error) {
       console.error("reCAPTCHA error:", error);
-      toast.error("エラーが発生しました。再試行してください。");
     }
+
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    form?.submit();
+
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const confirmation = token
+      ? fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, phone, message, token }),
+          keepalive: true,
+        }).catch((error) => console.error("Confirmation mail error:", error))
+      : Promise.resolve();
+
+    sessionStorage.setItem("toastSuccess", "true");
+
+    // Google フォームへの送信完了を待つため最低1.5秒、メール送信は最大4秒待ってから再読み込みする
+    await Promise.all([Promise.race([confirmation, sleep(4000)]), sleep(1500)]);
+    window.location.reload();
   };
 
   return (
@@ -149,7 +154,7 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="flex justify-center">
-                  <Button className="sm:w-[50%] w-full" type="submit">送信する</Button>
+                  <Button className="sm:w-[50%] w-full" type="submit" disabled={submitting}>送信する</Button>
                 </div>
                 <div className="grid justify-center leading-8">
                   <small className="flex gap-[2px] pt-12 leading-6 before:content-['※']">

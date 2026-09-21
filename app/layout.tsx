@@ -136,9 +136,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             gtag('config', 'G-Y05F7K44N3');
           `}
         </Script>
-
-        {/* ✅ Google reCAPTCHA */}
-        <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
       </body>
     </html>
   );

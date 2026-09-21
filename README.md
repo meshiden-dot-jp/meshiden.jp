@@ -9,7 +9,8 @@
 - スタイリング: Tailwind CSS
 - CI/CD: AWS Amplify
 - CMS: microCMS
-- セキュリティ: reCAPTCHA
+- セキュリティ: reCAPTCHA（v3）
+- メール送信: Nodemailer（iCloud メールの SMTP）
 - 画像配信: Cloudinary
 
 ## ディレクトリ構成
@@ -43,6 +44,17 @@
 - 各ページの `<title>` / `description` / OGP・Twitterカード / canonical URL は、対応するルート内の `page.tsx`（サーバーコンポーネント）または `layout.tsx`（`"use client"` な page.tsx に対して）で個別に定義しています。ルート直下の `app/layout.tsx` はサイト全体のフォールバック（トップページ用）のみを担い、各ページはそれを上書きする形です。
 - サイトマップは `next-sitemap`（`next-sitemap.config.js`）により `npm run build` の `postbuild` で自動生成され、`public/sitemap.xml` / `public/sitemap-0.xml` に出力されます。管理者権限限定の `/draft-b`, `/draft-w` は生成対象から除外し、`noindex` も設定しています。
 - サイト全体の構造化データ（Person / WebSite の JSON-LD）は `app/layout.tsx` に定義しています。
+
+## お問い合わせフォーム
+
+- 入力内容は従来どおり Google フォームに送信され、あわせて送信者（フォームに入力されたメールアドレス）へ完了メールを送ります（`app/api/contact/route.ts`、本文は `lib/contact-mail.ts`）。
+- 完了メールは補助機能です。reCAPTCHA の検証に成功した場合のみ送信され、失敗・未設定でも問い合わせ自体は Google フォームに届きます。
+- 完了メールに必要な環境変数（Amplify コンソールの環境変数に設定）:
+  - `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS`（必須。iCloud の場合は `smtp.mail.me.com` / `587`、`SMTP_PASS` は Apple ID の App 用パスワード）
+  - `MAIL_FROM`（任意。既定は `飯田優斗 <contact@meshiden.jp>`。iCloud のアカウントで送信を許可されたエイリアスであること）
+  - `RECAPCHA_SECRET_KEY`（reCAPTCHA の検証用。綴りは既存の変数名のまま）
+- `NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY` はビルド時にクライアントへ埋め込まれます。
+- Amplify の Next.js（SSR）では、コンソールに設定した環境変数はビルド時にしか見えず、API ルートの実行時には渡りません。ビルド設定（`amplify.yml`）の build コマンドで `.env.production` に書き出す必要があります（例: `env | grep -e SMTP_ -e MAIL_FROM -e RECAPCHA_SECRET_KEY >> .env.production`）。
 
 ## コンタクト
 サイト上のフォーム、または以下の連絡先よりお問い合わせください。
