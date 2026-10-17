@@ -11,6 +11,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeReact from "rehype-react";
 import React from "react";
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
+import { formatDate } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const baseUrl = "https://meshiden.jp";
@@ -129,7 +130,7 @@ export default async function BlogDetail({ params }: { params?: { id?: string } 
         />
         <div className="article" >
           <h1>{blog.title}</h1>
-          <p>{new Date(blog.publishedAt).toLocaleDateString()}</p>
+          <p>{formatDate(blog.publishedAt)}</p>
           {jsxContent}
         </div>
       </div>

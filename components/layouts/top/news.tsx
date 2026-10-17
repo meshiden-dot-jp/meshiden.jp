@@ -13,6 +13,7 @@ import Error from "@/components/layouts/error"; import {
   TableCell,
   TableRow,
 } from "@/components/ui/table";
+import { formatDate } from "@/lib/utils";
 
 export default function BlogPage() {
   const [blog, setBlog] = useState<Blog[]>([]);
@@ -70,7 +71,7 @@ export default function BlogPage() {
               {blog.map((post) => (
                 <TableRow key={post.id} className="flex flex-wrap sm:table-row border-b bg-none">
                   <TableCell className="w-1/4 sm:w-1/12 align-text-top  pl-2 sm:pl-4">
-                    {new Date(post.publishedAt).toLocaleDateString()}
+                    {formatDate(post.publishedAt)}
                   </TableCell>
                   <TableCell className="w-1/4 sm:w-1/12 text-[10px] align-text-top font-medium text-center min-w-32">
                     <p className="text-[10px] bg-gray-100 px-2 leading-5 rounded-sm">

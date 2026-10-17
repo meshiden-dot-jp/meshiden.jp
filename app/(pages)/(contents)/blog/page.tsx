@@ -28,6 +28,7 @@ import {
   PaginationLink,
 } from "@/components/ui/pagination";
 import type { MicroCMSQueries } from "microcms-js-sdk";
+import { formatDate } from "@/lib/utils";
 
 // microCMS のレスポンス用
 type BlogListResponse = {
@@ -225,7 +226,7 @@ function BlogPageInner() {
                   <CardContent className="inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">
                     <CardDescription className="text-xs">
                       <small className="p-6 inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">
-                        {new Date(post.publishedAt).toLocaleDateString()}
+                        {formatDate(post.publishedAt)}
                       </small>
                     </CardDescription>
                   </CardContent>

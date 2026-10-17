@@ -11,6 +11,7 @@ import Skeleton from "../sk_card";
 import Zero from "@/components/layouts/zero";
 import { Badge } from "@/components/ui/badge";
 import Error from "@/components/layouts/error";
+import { formatDate } from "@/lib/utils";
 
 
 export default function BlogPage() {
@@ -91,7 +92,7 @@ export default function BlogPage() {
                 <div className="flex p-0">
                 <CardContent className="inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">
                   <CardDescription className="text-xs">
-                    <small className="p-6 inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">{new Date(post.publishedAt).toLocaleDateString()}</small>
+                    <small className="p-6 inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">{formatDate(post.publishedAt)}</small>
                   </CardDescription>
                 </CardContent>
 

@@ -26,6 +26,7 @@ import {
   PaginationNext,
   PaginationLink,
 } from "@/components/ui/pagination";
+import { formatDate } from "@/lib/utils";
 
 // microCMS のレスポンス型（必要なら別ファイルに切り出してもOK）
 type WorkListResponse = {
@@ -203,7 +204,7 @@ function WorkPageInner() {
                 <CardContent className="inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">
                   <CardDescription className="text-xs">
                     <small className="inline-flex items-center rounded-full border px-0 py-0.5 transition-colors font-normal border-transparent text-muted-foreground text-xs">
-                      {new Date(post.publishedAt).toLocaleDateString()}
+                      {formatDate(post.publishedAt)}
                     </small>
                   </CardDescription>
                 </CardContent>

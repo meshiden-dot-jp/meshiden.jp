@@ -12,6 +12,7 @@ import React from "react";
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const baseUrl = "https://meshiden.jp";
@@ -139,7 +140,7 @@ export default async function BlogDetail({ params }: { params?: { id?: string } 
           <div className="article" >
             <h1>{blog.title}</h1>
             <div className="flex items-center">
-              <p>{new Date(blog.publishedAt).toLocaleDateString()}</p>
+              <p>{formatDate(blog.publishedAt)}</p>
             {/* カテゴリがある場合のみ表示 */}
             {blog.category && blog.category.length > 0 && (
               <div className="flex p-0 pt-4 pl-2">

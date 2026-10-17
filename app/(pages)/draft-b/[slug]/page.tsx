@@ -9,6 +9,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeReact from "rehype-react";
 import React from "react";
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
+import { formatDate } from "@/lib/utils";
 
 
 export const dynamic = "force-dynamic";
@@ -70,7 +71,7 @@ export default async function DraftPage({ params, searchParams }: Props) {
           />
           <div className="article" >
             <h1>{blog.title}</h1>
-            <p>{new Date(blog.publishedAt).toLocaleDateString()}</p>
+            <p>{formatDate(blog.publishedAt)}</p>
             {jsxContent}
           </div>
         </div>

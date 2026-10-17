@@ -18,6 +18,7 @@ import {
   PaginationNext,
   PaginationLink,
 } from "@/components/ui/pagination";
+import { formatDate } from "@/lib/utils";
 
 // microCMS のレスポンス型
 type NewsListResponse = {
@@ -174,7 +175,7 @@ function NewsPageInner() {
                   className="flex flex-wrap sm:table-row border-b"
                 >
                   <TableCell className="w-1/4 sm:w-1/12 align-text-top pl-2 sm:pl-4">
-                    {new Date(post.publishedAt).toLocaleDateString()}
+                    {formatDate(post.publishedAt)}
                   </TableCell>
                   <TableCell className="w-1/4 sm:w-1/12 text-[10px] align-text-top font-medium text-center min-w-32">
                     <p className="text-[10px] bg-gray-100 px-2 leading-5 rounded-sm">

@@ -13,6 +13,7 @@ import {
 } from "react-instantsearch";
 import type { Hit } from "instantsearch.js";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
 const apiKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
@@ -48,7 +49,7 @@ function HitComponent({ hit, onClose }: { hit: ContentHit; onClose: () => void }
         )}
         {hit.publishedAt && (
           <p className="text-xs text-gray-400 mt-0.5">
-            {new Date(hit.publishedAt).toLocaleDateString("ja-JP")}
+            {formatDate(hit.publishedAt)}
           </p>
         )}
       </div>
